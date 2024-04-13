@@ -2,26 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.body {
+  background-color: #040609;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.control-shadow {
+  box-shadow: 2px 2px 4px #b6b3b2dd, -1px -1px 6px #f6f2f0dd;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.mybutton {
+  transition: all 0.1s ease-in-out 0s;
 }
+
+.button-shadow {
+  background: linear-gradient(135deg, #d6d2d1dd, #d6d2d1ee) no-repeat,
+    url("/texture.png") repeat;
+  background-size: 100% 100%, 100px 100px;
+  box-shadow: 5px 5px 10px #b6b3b2, -5px -5px 24px #f6f2f0,
+    inset 0px 0px 0px #ffffff00, inset 0px 0px 0px #ffffff00;
+}
+
+.button-shadow-pressed {
+  box-shadow: 0px 0px 0px #ffffff00, 0px 0px 0px #ffffff00,
+    inset 3px 3px 7px #b6b3b2, inset -3px -3px 7px #f6f2f0;
+}
+
+.metal {
+  background: linear-gradient(135deg, #e3e3e388, #96969688) no-repeat,
+    url("/texture.png") repeat;
+  background-size: 100% 100%, 100px 100px;
+  background-blend-mode: lighten;
+
+  box-shadow: 2px 2px 4px #b6b3b2, -2px -2px 4px #f6f2f0;
+}
+
+/* 
+// button #D6D2D1
+// bg #D7D3D2
+// divide #040609
+
+// shadow top #b6b3b2
+// shadow bottom #f6f2f0 */
