@@ -1,17 +1,25 @@
 "use client";
 
+import DialMeter from "@/components/dialMeter";
+import LedMeter from "@/components/ledMeter";
 import MidiKeyboard from "@/components/midiKeyboard";
 import TapeDeck from "@/components/tapeDeck";
 import { useEffect, useState } from "react";
-import { PolySynth, Reverb, now } from "tone";
+import { PolySynth, Reverb, now, Draw, Meter, Analyser, DCMeter } from "tone";
 
 export default function Home() {
+  const [meter] = useState(new Meter());
+  const [normalMeter] = useState(new Meter({ normalRange: true }));
+  const [analyzer] = useState(new Analyser("waveform", 256));
   const [synth, setSynth] = useState(new PolySynth().toDestination());
 
   useEffect(() => {
     const reverb = new Reverb(10).toDestination();
     synth.connect(reverb);
-  }, [synth])
+    synth.connect(meter);
+    synth.connect(normalMeter);
+    synth.connect(analyzer);
+  }, [synth]);
 
   const getNote = (note: number) => {
     const notes = [
@@ -47,7 +55,6 @@ export default function Home() {
 
   const onMidiEvent = (event: MidiEvent) => {
     const synthEvent = convertMidiEventToSynthEvent(event);
-    console.log(synthEvent);
     if (synth) {
       if (synthEvent.isAttack) {
         synth.triggerAttack(synthEvent.frequency, now(), synthEvent.normalVelo);
@@ -61,8 +68,16 @@ export default function Home() {
     <main className="flex min-w-[1200px] min-h-screen flex-col items-center justify-between py-12">
       <div className="z-10 w-full max-w-[1100px] items-center justify-center flex flex-col gap-[100px] h-full">
         <div className="metal p-[25px] mt-[50px] w-full">
-          <div className="flex flex-row">
+          <div className="flex flex-row gap-[15px]">
             <TapeDeck />
+            <div className="flex flex-col gap-[15px] w-full">
+              <LedMeter meter={meter} />
+              <div className="flex flex-row gap-[15px]">
+                <DialMeter meter={normalMeter} />
+                <DialMeter meter={normalMeter} />
+                <DialMeter meter={normalMeter} />
+              </div>
+            </div>
           </div>
           <MidiKeyboard
             onMidiEvent={onMidiEvent}
