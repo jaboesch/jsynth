@@ -1,9 +1,7 @@
 "use client";
 
-import Keys from "@/components/keys";
 import MidiKeyboard from "@/components/midiKeyboard";
 import TapeDeck from "@/components/tapeDeck";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { PolySynth, Reverb, now } from "tone";
 

@@ -54,25 +54,41 @@ body {
 }
 
 .tape {
-  background: linear-gradient(135deg, #e3e3e399, #e3e3e3cc) no-repeat,
-    url("/texture.png") repeat #969696;
+  background: linear-gradient(135deg, #f6f2f0aa, #f6f2f0aa) no-repeat,
+    url("/texture.png") repeat #b6b3b2;
   background-size: 100% 100%, 80px 80px;
   border-radius: 3px;
 }
 
 .tape-dent {
-  box-shadow: inset 2px 2px 5px #b6b3b233, inset -2px -2px 5px #b6b3b277,
-    5px 5px 5px #b6b3b233, -2px -2px 5px #b6b3b277;
+  box-shadow: inset 1px 1px 3px #b6b3b2, inset -1px -1px 3px #f6f2f0;
+}
+
+.tape-accent-texture {
   background: linear-gradient(135deg, #0e0e0e33, #0e0e0e55) no-repeat,
     url("/texture.png") repeat #0e0e0e77;
   background-size: 100% 100%, 80px 80px;
 }
 
 .logo-mask {
-  mask-image: url("/jsynth.svg");
-  mask-repeat: no-repeat;  
+  mask-image: url("/j.svg");
+  mask-repeat: no-repeat;
   mask-size: contain;
   mask-position: center;
+}
+
+.trap-mask {
+  mask-image: url("/trapezoid.svg");
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  mask-position: center; 
+}
+
+.trapezoid {
+  position: absolute;
+  width: 80px; /* Adjust size */
+  height: 80px; /* Adjust size */
+  transform-origin: 50% 100px;
 }
 
 @keyframes spin {
