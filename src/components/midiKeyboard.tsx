@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
+import KeyboardButton from "./keyboardButton";
 
 type Props = {
   onMidiEvent: (event: MidiEvent) => void;
@@ -66,7 +67,7 @@ const MidiKeyboard = ({
       setActiveNotes((curr) => ({ ...curr, [note]: false }));
       onMidiEvent({
         command: 128,
-        note: keyboardToMIDIMap[event.code],
+        note: note + keyboardOctave * 12,
         velocity: 0,
       });
     }
@@ -109,29 +110,51 @@ const MidiKeyboard = ({
   }, [handleKeyDown, handleKeyUp, onMidiEvent]);
 
   return (
-    <div className="w-full flex flex-row gap-[1px] p-[1px]  control-shadow">
-      {Object.values(activeNotes).map((noteActive, index) => (
-        <div
-          key={`key-${index}`}
-          className={clsx(
-            "w-full h-[200px] shadow-lg bg-[#D7D3D2] rounded-[1px] overflow-hidden p-[10px]"
-          )}
-        >
-          <div
-            className={clsx(
-              "pt-[5px] pl-[5px] pb-[10px] pr-[10px] rounded-[25px] w-full h-full overflow-hidden",
-            //   noteActive ? "button-shadow-pressed" : "button-shadow"
-            )}
-          >
-            <div
-              className={clsx(
-                "w-full h-full bg-[#D6D2D1] mybutton rounded-[25px]",
-                noteActive ? "button-shadow-pressed" : "button-shadow"
-              )}
-            />
-          </div>
-        </div>
-      ))}
+    <div className="flex w-min mx-auto flex-col gap-[1px] keyboard-surface p-[1px]">
+      <div className="flex flex-row gap-[1px]">
+        <KeyboardButton isPressed={false} className="!w-[151px] h-[75px]">
+          on/off
+        </KeyboardButton>
+        <KeyboardButton isPressed={false} className=" h-[75px] font-thin">
+          1
+        </KeyboardButton>
+        <KeyboardButton isPressed={false} className=" h-[75px] font-thin">
+          2
+        </KeyboardButton>
+        <KeyboardButton isPressed={false} className=" h-[75px]">
+          3
+        </KeyboardButton>
+        <KeyboardButton isPressed={false} className=" h-[75px]">
+          4
+        </KeyboardButton>
+        <KeyboardButton isPressed={false} className=" h-[75px]">
+          5
+        </KeyboardButton>
+        <KeyboardButton isPressed={false} className=" h-[75px]">
+          6
+        </KeyboardButton>
+        <KeyboardButton isPressed={false} className=" h-[75px]">
+          7
+        </KeyboardButton>
+        <KeyboardButton isPressed={false} className=" h-[75px]">
+          8
+        </KeyboardButton>
+        <KeyboardButton isPressed={false} className=" h-[75px]">
+          ↓
+        </KeyboardButton>
+        <KeyboardButton isPressed={false} className=" h-[75px]">
+          ↑
+        </KeyboardButton>
+      </div>
+      <div className="flex flex-row gap-[1px]">
+        {Object.values(activeNotes).map((noteActive, index) => (
+          <KeyboardButton
+            key={`key-button-${index}`}
+            isPressed={noteActive}
+            className="h-[150px]"
+          />
+        ))}
+      </div>
     </div>
   );
 };

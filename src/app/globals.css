@@ -2,38 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-.body {
-  background-color: #040609;
+body {
+  background: #d6d2d1;
 }
 
-.control-shadow {
-  box-shadow: 2px 2px 4px #b6b3b2dd, -1px -1px 6px #f6f2f0dd;
+.keyboard-surface {
+  box-shadow: 2px 2px 4px #2e2e2e55, -1px -1px 6px #d6d2d1;
+  background: #b6b3b2;
+  border-radius: 3px;
 }
 
-.mybutton {
-  transition: all 0.1s ease-in-out 0s;
+.keyboard-button-housing {
+  padding: 10px;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #d6d2d1;
 }
 
-.button-shadow {
+.keyboard-button-mask {
+  background: #d6d2d1;
+  border-radius: 25px;
+  padding: 5px 10px 10px 5px;
+  overflow: hidden;
+}
+
+.keyboard-button {
   background: linear-gradient(135deg, #d6d2d1dd, #d6d2d1ee) no-repeat,
     url("/texture.png") repeat;
   background-size: 100% 100%, 100px 100px;
+  transition: all 0.1s ease-in-out 0s;
+  border-radius: 25px;
+}
+
+.keyboard-button-unpressed {
   box-shadow: 5px 5px 10px #b6b3b2, -5px -5px 24px #f6f2f0,
     inset 0px 0px 0px #ffffff00, inset 0px 0px 0px #ffffff00;
 }
 
-.button-shadow-pressed {
+.keyboard-button-pressed {
   box-shadow: 0px 0px 0px #ffffff00, 0px 0px 0px #ffffff00,
     inset 3px 3px 7px #b6b3b2, inset -3px -3px 7px #f6f2f0;
 }
 
 .metal {
   background: linear-gradient(135deg, #e3e3e388, #96969688) no-repeat,
-    url("/texture.png") repeat;
+    url("/texture.png") repeat #e3e3e3;
   background-size: 100% 100%, 100px 100px;
-  background-blend-mode: lighten;
+  box-shadow: 3px 3px 6px #b6b3b2, -3px -3px 6px #f6f2f0, 27px 27px 53px #b6b3b2,
+    -27px -27px 53px #f6f2f0;
+  border-radius: 3px;
+}
 
-  box-shadow: 2px 2px 4px #b6b3b2, -2px -2px 4px #f6f2f0;
+.tape {
+  background: linear-gradient(135deg, #e3e3e399, #e3e3e3cc) no-repeat,
+    url("/texture.png") repeat #969696;
+  background-size: 100% 100%, 80px 80px;
+  border-radius: 3px;
+}
+
+.tape-dent {
+  box-shadow: inset 2px 2px 5px #b6b3b233, inset -2px -2px 5px #b6b3b277,
+    5px 5px 5px #b6b3b233, -2px -2px 5px #b6b3b277;
+  background: linear-gradient(135deg, #0e0e0e33, #0e0e0e55) no-repeat,
+    url("/texture.png") repeat #0e0e0e77;
+  background-size: 100% 100%, 80px 80px;
+}
+
+.logo-mask {
+  mask-image: url("/jsynth.svg");
+  mask-repeat: no-repeat;  
+  mask-size: contain;
+  mask-position: center;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin 6s linear infinite;
 }
 
 /* 
