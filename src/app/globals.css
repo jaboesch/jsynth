@@ -119,13 +119,13 @@ body {
 .led-yellow {
   background-color: #ffeb3b;
   box-shadow: inset 2px 2px 4px #c5c233, inset -1px -1px 1px #ffff53,
-    2px 2px 4px #c5c233, -1px -1px 1px #ffff53
+    2px 2px 4px #c5c233, -1px -1px 1px #ffff53;
 }
 
 .led-red {
   background-color: #f44336;
   box-shadow: inset 2px 2px 4px #b33c30, inset -1px -1px 1px #ff5243,
-    2px 2px 4px #b33c30, -1px -1px 1px #ff5243
+    2px 2px 4px #b33c30, -1px -1px 1px #ff5243;
 }
 
 .meter {
@@ -134,7 +134,7 @@ body {
   border: 3px solid #ccc;
   border-radius: 50px;
   position: relative;
-  background: radial-gradient(#EAF165, #E78808aa) no-repeat,
+  background: radial-gradient(#eaf165bb, #e78808aa) no-repeat,
     url("/texture.png") repeat #f6f2f0;
   background-size: 100% 100%, 80px 80px;
   box-shadow: inset 2px 2px 5px #b6b3b2, inset -2px -2px 5px #f6f2f0;
